@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
+import vuetify from './plugins/vuetify';
+import screen from 'vue-screen';
+
+Vue.use(screen);
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  vuetify,
+  router,
+  render: h => h(App)
+}, App).$mount('#app')
