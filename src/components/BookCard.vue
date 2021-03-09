@@ -7,7 +7,7 @@
                 class="rounded-l h-100"
                 />
             </v-col>
-            <v-col cols="7" class="height">
+            <v-col cols="7" class="height rounded-r" v-bind:class="{ 'border': border }">
                 <div class="book-info d-flex flex-column h-100">
                     <h3 class="flex-grow-0 text-center">{{title}}</h3>
                     <hr>
@@ -15,6 +15,7 @@
                         <p class="mb-0"><strong>Author:</strong><br>{{author}}</p>
                         <p class="mb-0"><strong>Genre:</strong><br>{{genre}}</p>
                         <p class="mb-0"><strong>Rating:</strong><br>{{age}}+</p>
+                        <p class="mb-0" v-if="series"><strong>Series:</strong><br>{{series}} (Book {{seriesBookNum}})</p>
                     </div>
                     <v-rating
                         :value=rating
@@ -37,6 +38,11 @@
     height: 100%;
 }
 
+.border {
+    border: 1px black solid;
+    border-left-width: 0;
+}
+
 .height{
     max-height: 350px;
     min-height: 258px;
@@ -57,6 +63,9 @@ export default {
         age: Number,
         imageName: String,
         rating: Number,
+        series: String,
+        seriesBookNum: Number,
+        border: Boolean,
     },
     computed: {
         getRatingFontSize(){

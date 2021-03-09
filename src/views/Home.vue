@@ -40,7 +40,7 @@
 
 <script>
 import Carousel from "@/components/HomeCarousel.vue";
-import BookCard from "@/components/HomeBookCard.vue";
+import BookCard from "@/components/BookCard.vue";
 export default {
   name: 'Home',
   data() {
