@@ -1,5 +1,5 @@
 <template>
-    <carousel-3d :width="this.getWidth" :height="this.getHeight" :border="0" :inverseScaling="400" :space="this.space" :controlsVisible="true" :loop="true">
+    <carousel-3d :width="this.getWidth" :height="this.getHeight" :border="0" :inverseScaling="400" :space="this.space" :controlsVisible="!this.$screen.touch" :loop="true">
         <slide v-for="(book, key) in books" v-bind:key="key" :index="key">
           <router-link :to="{ name: 'Review', params: { id: book.id }}"><v-img :src="require(`@/assets/covers/${book.cover}`)" :height="getHeight" class="my-auto"/></router-link>
         </slide>

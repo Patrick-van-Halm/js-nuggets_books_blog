@@ -8,6 +8,16 @@
       </v-row>
       <v-row>
         <v-col class="text-center pb-0">
+          <h4>Filter on author</h4> 
+        </v-col>
+      </v-row>
+      <v-row class="d-flex justify-center">
+        <v-col class="text-center pt-0">
+          <v-btn v-for="letter in alphabet" v-bind:key="letter" tile class="px-2 my-1 ml-1 bg-tertiary" :class="{ active: (selected_letter == letter || selected_letter == '' && letter == 'all') }" min-width="36" @click="setLetterFilter(letter)">{{letter}}</v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="text-center pb-0">
           <h4>Filter on published date</h4> 
         </v-col>
       </v-row>
@@ -23,16 +33,6 @@
             attach
             @change="setYearFilter()"
           ></v-select>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="text-center pb-0">
-          <h4>Filter on author</h4> 
-        </v-col>
-      </v-row>
-      <v-row class="d-flex justify-center">
-        <v-col class="text-center pt-0">
-          <v-btn v-for="letter in alphabet" v-bind:key="letter" tile class="px-2 my-1 ml-1 bg-tertiary" :class="{ active: (selected_letter == letter || selected_letter == '' && letter == 'all') }" min-width="36" @click="setLetterFilter(letter)">{{letter}}</v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -155,36 +155,24 @@ export default {
       if(letter == 'all'){
         this.selected_letter = '';
         this.selected_author = '';
-        this.filteredAuthors = [];
-        this.books = this.allBooks;
+        this.selected_month = 'All';
+        this.selected_year = 'All';
       }
       else{
         this.selected_letter = letter;
-        this.updateFilteredAuthors();
+        this.selected_month = 'All';
+        this.selected_year = 'All';
       }
+      this.onFilterChange();
     },
+    
     setAuthorFilter(author){
+      this.selected_month = 'All';
+      this.selected_year = 'All';
       this.selected_author = author;
-      this.updateFilteredBooks();
+      this.onFilterChange();
     },
-    updateFilteredAuthors(){
-      this.filteredAuthors = [];
-      this.selected_author = '';
-      this.books = [];
-      this.allBooks.forEach(book => {
-        let author = book.author;
-        if(author[0].toLowerCase() == this.selected_letter && !this.filteredAuthors.includes(author))
-          this.filteredAuthors.push(author);
-      })
-    },
-    updateFilteredBooks(){
-      this.books = [];
-      this.allBooks.forEach(book => {
-        let author = book.author;
-        if(author == this.selected_author)
-          this.books.push(book);
-      })
-    },
+
     onFilterChange(){
       this.books = [];
       this.filteredAuthors = [];
@@ -199,6 +187,12 @@ export default {
           bookAllowedToBeAdded = false;
 
         if(this.selected_month != "All" && reviewDate.month() != this.months.indexOf(this.selected_month) - 1)
+          bookAllowedToBeAdded = false;
+
+        if(this.selected_letter && book.author[0].toLowerCase() != this.selected_letter)
+          bookAllowedToBeAdded = false;
+
+        if(this.selected_author && book.author != this.selected_author)
           bookAllowedToBeAdded = false;
 
         if(bookAllowedToBeAdded){

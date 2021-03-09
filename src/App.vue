@@ -7,7 +7,7 @@
     >
       <v-toolbar-title class="fs-2 indie-flower">Nuggets books blog</v-toolbar-title>
       <v-spacer />
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="!this.$screen.sm || !this.$screen.md" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="!this.$screen.sm" />
       <div id="nav" v-else>
         <v-btn :to="{name: 'Home'}" text plain tile active-class="font-weight-black" exact>Home</v-btn>
         <v-btn :to="{name: 'Reviews'}" text plain tile active-class="font-weight-black" exact>Reviews</v-btn>
@@ -20,7 +20,7 @@
       right
       app
       temporary
-      v-if="!this.$screen.sm || !this.$screen.md"
+      v-if="!this.$screen.sm"
     >
       <v-list
         nav
