@@ -5,7 +5,7 @@
       app
       class="bg-primary"
     >
-      <v-toolbar-title class="fs-2 indie-flower">Nuggets books blog</v-toolbar-title>
+      <v-toolbar-title class="fs-2 indie-flower"><router-link :to="{name: 'Home'}" class="black--text text-decoration-none">Nuggets books blog</router-link></v-toolbar-title>
       <v-spacer />
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="!this.$screen.sm" />
       <div id="nav" v-else>
@@ -59,6 +59,7 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&display=swap');
+
 
   .dancing-script{
     font-family: 'Dancing Script', cursive !important;
