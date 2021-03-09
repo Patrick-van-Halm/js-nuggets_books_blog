@@ -18,7 +18,7 @@
       </v-row>
       <v-row>
         <v-col class="text-center pb-0">
-          <h4>Filter on published date</h4> 
+          <h4>Filter on published review date</h4> 
         </v-col>
       </v-row>
       <v-row class="d-flex justify-center">
@@ -37,56 +37,35 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-container v-if="!selected_letter && !selected_author">
-            <v-row>
-              <v-col class="d-flex flex-column justify-center">
-                <h3>All authors</h3>
+          <v-container>
+            <v-row v-bind:class="{'flex-column': !this.$screen.sm}">
+              <v-col class="d-flex flex-column justify-center pb-0">
+                <h3>{{getTitle}}</h3>
               </v-col>
-              <v-col cols="auto">
-                <v-text-field label="Search title or author" v-model="filterValue" @input="onFilterChange()"/>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6" lg="4" v-for="(book, i) in books" :key="i">
-                <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
+              <v-col cols="auto" class="pt-0">
+                <v-text-field :label="getSearchLabel" v-model="filterValue" @input="onFilterChange()"/>
               </v-col>
             </v-row>
-          </v-container>
-          <v-container v-else-if="selected_letter && !selected_author">
-            <v-row>
-              <v-col class="d-flex flex-column justify-center">
-                <h3>Authors starting with letter:<span class="ml-1 text-uppercase">{{selected_letter}}</span></h3>
-              </v-col>
-              <v-col cols="auto">
-                <v-text-field label="Search author" v-model="filterValue" @input="onFilterChange()"/>
-              </v-col>
-            </v-row>
-            <v-row class="flex-column" v-for="(author, i) in filteredAuthors" :key="i">
-              <v-col cols="12" offset="0" md="4" offset-md="4" class="pa-1">
-                <v-btn
-                  block
-                  @click="setAuthorFilter(author)"
-                  class="bg-tertiary"
-                >
-                {{author}}
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-container>
-          <v-container v-else-if="selected_letter && selected_author">
-            <v-row>
-              <v-col class="d-flex flex-column justify-center">
-                <h3>Books by: {{selected_author}}</h3>
-              </v-col>
-              <v-col cols="auto">
-                <v-text-field label="Search title" v-model="filterValue" @input="onFilterChange()"/>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="6" lg="4"  v-for="(book, i) in books" :key="i">
-                <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 series="From Blood and Ash" :border=true />
-              </v-col>
-            </v-row>
+            <v-container v-if="selected_letter && !selected_author">
+              <v-row class="flex-column" v-for="(author, i) in filteredAuthors" :key="i" >
+                <v-col cols="12" offset="0" md="4" offset-md="4" class="pa-1">
+                  <v-btn
+                    block
+                    @click="setAuthorFilter(author)"
+                    class="bg-tertiary"
+                  >
+                  {{author}}
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-container v-else>
+              <v-row>
+                <v-col cols="12" md="6" lg="4" v-for="(book, i) in books" :key="i">
+                  <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
+                </v-col>
+              </v-row>
+            </v-container>
           </v-container>
         </v-col>
       </v-row>
@@ -218,6 +197,24 @@ export default {
   computed: {
     getBooks(){
       return this.books.filter(book => book.Author[0] == this.selected_letter);
+    },
+
+    getTitle(){
+      if(this.selected_letter && this.selected_author)
+        return `Books by: ${this.selected_author}`;
+      else if(this.selected_letter)
+        return `Authors starting with: ${this.selected_letter.toUpperCase()}`;
+      else
+        return "All Reviews";
+    },
+
+    getSearchLabel(){
+      if(this.selected_letter && this.selected_author)
+        return `Search book`;
+      else if(this.selected_letter)
+        return `Search author`;
+      else
+        return "Search book or author";
     }
   }
 }
