@@ -51,7 +51,7 @@
         class="text-center"
         cols="12"
       >
-        {{ new Date().getFullYear() }} — <strong>Geneviève Oudwater</strong>
+        {{ new Date().getFullYear() }}&copy; — <strong>Geneviève Oudwater</strong>
       </v-col>
   </v-footer>
   </v-app>

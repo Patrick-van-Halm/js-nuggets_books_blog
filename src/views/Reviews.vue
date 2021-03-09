@@ -1,13 +1,37 @@
 <template>
   <div class="reviews">
-    <v-container fluid>
+    <v-container>
       <v-row class="mx-2">
         <v-col class="text-center">
           <h2 class="fs-3 dancing-script">Reviews</h2>
         </v-col>
       </v-row>
       <v-row>
-        <v-col class="text-center">
+        <v-col class="text-center pb-0">
+          <h4>Filter on published date</h4> 
+        </v-col>
+      </v-row>
+      <v-row class="d-flex justify-center">
+        <v-col class="text-center py-0 my-2" cols="auto">
+          <v-btn v-for="month in months" v-bind:key="month" tile class="px-2 my-1 ml-1 bg-tertiary" :class="{ active: (selected_month == month) }" min-width="36" @click="setMonthFilter(month)">{{month}}</v-btn>
+        </v-col>
+        <v-col cols="auto" class="pa-0">
+          <v-select
+            :items="years"
+            label="Year"
+            v-model="selected_year"
+            attach
+            @change="setYearFilter()"
+          ></v-select>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="text-center pb-0">
+          <h4>Filter on author</h4> 
+        </v-col>
+      </v-row>
+      <v-row class="d-flex justify-center">
+        <v-col class="text-center pt-0">
           <v-btn v-for="letter in alphabet" v-bind:key="letter" tile class="px-2 my-1 ml-1 bg-tertiary" :class="{ active: (selected_letter == letter || selected_letter == '' && letter == 'all') }" min-width="36" @click="setLetterFilter(letter)">{{letter}}</v-btn>
         </v-col>
       </v-row>
@@ -16,10 +40,10 @@
           <v-container v-if="!selected_letter && !selected_author">
             <v-row>
               <v-col class="d-flex flex-column justify-center">
-                <h3>All reviews</h3>
+                <h3>All authors</h3>
               </v-col>
-              <v-col cols="5" md="4" lg="3">
-                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              <v-col cols="auto">
+                <v-text-field label="Search title or author" v-model="filterValue" @input="onFilterChange()"/>
               </v-col>
             </v-row>
             <v-row>
@@ -33,8 +57,8 @@
               <v-col class="d-flex flex-column justify-center">
                 <h3>Authors starting with letter:<span class="ml-1 text-uppercase">{{selected_letter}}</span></h3>
               </v-col>
-              <v-col cols="5" md="4" lg="3">
-                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              <v-col cols="auto">
+                <v-text-field label="Search author" v-model="filterValue" @input="onFilterChange()"/>
               </v-col>
             </v-row>
             <v-row class="flex-column" v-for="(author, i) in filteredAuthors" :key="i">
@@ -54,8 +78,8 @@
               <v-col class="d-flex flex-column justify-center">
                 <h3>Books by: {{selected_author}}</h3>
               </v-col>
-              <v-col cols="5" md="4" lg="3">
-                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              <v-col cols="auto">
+                <v-text-field label="Search title" v-model="filterValue" @input="onFilterChange()"/>
               </v-col>
             </v-row>
             <v-row>
@@ -79,6 +103,7 @@
 
 <script>
 import BookCard from "../components/BookCard.vue";
+import moment from "moment";
 export default {
   name: 'Reviews',
   components: {
@@ -86,22 +111,46 @@ export default {
   },
   data() {return {
     alphabet: ['all', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+    years: ['All', '2021'],
+    months: [],
+    selected_year: 'All',
+    selected_month: 'All',
     selected_letter: '',
     selected_author: '',
     allBooks: [
-      {title: "Test", author: "James"},
-      {title: "Test2", author: "James"},
-      {title: "Test3", author: "James"},
-      {title: "John's dish", author: "John"},
+      {title: "Test", author: "James", date: "20-01-2021"},
+      {title: "Test2", author: "James", date: "21-01-2021"},
+      {title: "Test3", author: "James", date: "22-01-2021"},
+      {title: "John's dish", author: "John", date: "23-01-2021"},
     ],
     filteredAuthors: [],
     books: [],
     filterValue: ''
   }},
   created() {
-    this.books = this.allBooks
+    this.updateMonthButtons();
+    this.onFilterChange();
   },
   methods: {
+    setYearFilter(){
+      this.updateMonthButtons();
+      this.selected_month = 'All';
+      this.onFilterChange();
+    },
+
+    updateMonthButtons(){
+      let today = moment();
+      this.months = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      if(this.selected_year != 'All' && today.year() == this.selected_year){
+        this.months = this.months.slice(0, today.month() + 2);
+      }
+    },
+
+    setMonthFilter(month){
+      this.selected_month = month;
+      this.onFilterChange();
+    },
+
     setLetterFilter(letter){
       if(letter == 'all'){
         this.selected_letter = '';
@@ -136,12 +185,23 @@ export default {
           this.books.push(book);
       })
     },
-    OnFilterChange(){
+    onFilterChange(){
       this.books = [];
       this.filteredAuthors = [];
       this.allBooks.forEach(book => {
         let isAdded = false;
-        if(!this.selected_author || book.author == this.selected_author){
+        let bookAllowedToBeAdded = true;
+        let reviewDate = moment(book.date, "DD-MM-YYYY");
+        if(this.selected_author && book.author != this.selected_author)
+          bookAllowedToBeAdded = false;
+
+        if(this.selected_year != "All" && reviewDate.year() != this.selected_year)
+          bookAllowedToBeAdded = false;
+
+        if(this.selected_month != "All" && reviewDate.month() != this.months.indexOf(this.selected_month) - 1)
+          bookAllowedToBeAdded = false;
+
+        if(bookAllowedToBeAdded){
           if(book.title.toLowerCase().includes(this.filterValue.toLowerCase()) && !isAdded){
             this.books.push(book);
             isAdded = true;
