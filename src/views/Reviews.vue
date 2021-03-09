@@ -2,8 +2,8 @@
   <div class="reviews">
     <v-container fluid>
       <v-row class="mx-2">
-        <v-col>
-          <h2 class="fs-2 dancing-script">All my reviews</h2>
+        <v-col class="text-center">
+          <h2 class="fs-3 dancing-script">Reviews</h2>
         </v-col>
       </v-row>
       <v-row>
@@ -13,53 +13,57 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-list flat class="py-0" v-if="!selected_letter && !selected_author">
-            <v-subheader class="pa-0">
-              <v-container>
-                <v-row>
-                  <v-col class="d-flex flex-column justify-center">
-                    <h3 class="black--text fs-1_5">All books</h3>
-                  </v-col>
-                  <v-col cols="5" md="4" lg="3">
-                    <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-subheader>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6" lg="4" v-for="(book, i) in books" :key="i">
-                  <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-list>
-          <v-list flat class="py-0" v-else-if="selected_letter && !selected_author">
-            <v-subheader class="pa-0"><h3 class="black--text fs-1_5">Authors starting with letter:<span class="ml-1 text-uppercase">{{selected_letter}}</span></h3></v-subheader>
-            <v-container>
-              <v-row class="flex-column" v-for="(author, i) in filteredAuthors" :key="i">
-                <v-col cols="12" offset="0" md="4" offset-md="4" class="pa-1">
-                  <v-btn
-                    block
-                    @click="setAuthorFilter(author)"
-                    class="bg-tertiary"
-                  >
-                  {{author}}
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-list>
-          <v-list flat class="py-0" v-else-if="selected_author">
-            <v-subheader class="pa-0 black--text fs-1_5"><h3 class="black--text fs-1_5">Books by: {{selected_author}}</h3></v-subheader>
-            <v-container>
-              <v-row>
-                <v-col cols="12" md="6" lg="4"  v-for="(book, i) in filteredBooks" :key="i">
-                  <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 series="From Blood and Ash" :border=true />
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-list>
+          <v-container v-if="!selected_letter && !selected_author">
+            <v-row>
+              <v-col class="d-flex flex-column justify-center">
+                <h3>All reviews</h3>
+              </v-col>
+              <v-col cols="5" md="4" lg="3">
+                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6" lg="4" v-for="(book, i) in books" :key="i">
+                <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container v-else-if="selected_letter && !selected_author">
+            <v-row>
+              <v-col class="d-flex flex-column justify-center">
+                <h3>Authors starting with letter:<span class="ml-1 text-uppercase">{{selected_letter}}</span></h3>
+              </v-col>
+              <v-col cols="5" md="4" lg="3">
+                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              </v-col>
+            </v-row>
+            <v-row class="flex-column" v-for="(author, i) in filteredAuthors" :key="i">
+              <v-col cols="12" offset="0" md="4" offset-md="4" class="pa-1">
+                <v-btn
+                  block
+                  @click="setAuthorFilter(author)"
+                  class="bg-tertiary"
+                >
+                {{author}}
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container v-else-if="selected_letter && selected_author">
+            <v-row>
+              <v-col class="d-flex flex-column justify-center">
+                <h3>Books by: {{selected_author}}</h3>
+              </v-col>
+              <v-col cols="5" md="4" lg="3">
+                <v-text-field label="Search" v-model="filterValue" @input="OnFilterChange()"/>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6" lg="4"  v-for="(book, i) in books" :key="i">
+                <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 series="From Blood and Ash" :border=true />
+              </v-col>
+            </v-row>
+          </v-container>
         </v-col>
       </v-row>
     </v-container>
@@ -90,9 +94,8 @@ export default {
       {title: "Test3", author: "James"},
       {title: "John's dish", author: "John"},
     ],
-    books: [],
     filteredAuthors: [],
-    filteredBooks: [],
+    books: [],
     filterValue: ''
   }},
   created() {
@@ -103,6 +106,8 @@ export default {
       if(letter == 'all'){
         this.selected_letter = '';
         this.selected_author = '';
+        this.filteredAuthors = [];
+        this.books = this.allBooks;
       }
       else{
         this.selected_letter = letter;
@@ -116,34 +121,43 @@ export default {
     updateFilteredAuthors(){
       this.filteredAuthors = [];
       this.selected_author = '';
-      this.filteredBooks = [];
-      this.books.forEach(book => {
+      this.books = [];
+      this.allBooks.forEach(book => {
         let author = book.author;
         if(author[0].toLowerCase() == this.selected_letter && !this.filteredAuthors.includes(author))
           this.filteredAuthors.push(author);
       })
     },
     updateFilteredBooks(){
-      this.filteredBooks = [];
-      this.books.forEach(book => {
+      this.books = [];
+      this.allBooks.forEach(book => {
         let author = book.author;
         if(author == this.selected_author)
-          this.filteredBooks.push(book);
+          this.books.push(book);
       })
     },
     OnFilterChange(){
       this.books = [];
+      this.filteredAuthors = [];
       this.allBooks.forEach(book => {
         let isAdded = false;
-        if(book.title.includes(this.filterValue) && !isAdded){
-          this.books.push(book);
-          isAdded = true;
+        if(!this.selected_author || book.author == this.selected_author){
+          if(book.title.toLowerCase().includes(this.filterValue.toLowerCase()) && !isAdded){
+            this.books.push(book);
+            isAdded = true;
+          }
+  
+          if(book.author.toLowerCase().includes(this.filterValue.toLowerCase()) && !isAdded){
+            this.books.push(book);
+            isAdded = true;
+          }
         }
+      })
 
-        if(book.author.includes(this.filterValue) && !isAdded){
-          this.books.push(book);
-          isAdded = true;
-        }
+      this.books.forEach(book => {
+        let author = book.author;
+        if(author.toLowerCase().includes(this.filterValue.toLowerCase()) && !this.filteredAuthors.includes(author))
+          this.filteredAuthors.push(author);
       })
     }
   },
