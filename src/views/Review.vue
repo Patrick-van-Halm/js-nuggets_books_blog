@@ -47,18 +47,20 @@
                     </div>
                 </v-col>
                 <v-divider vertical/>
-                <v-col class="mr-2" cols="5" offset="2">
-                    <h2 class="fs-3 dancing-script text-center mb-2">My Review</h2>
-                    <v-divider class="my-2"/>
-                    <p class="lora body-1">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos rerum, eum quia dignissimos quaerat dolore saepe. Eum excepturi consequuntur alias voluptatum assumenda, perspiciatis voluptate. Omnis quis exercitationem at obcaecati!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius impedit maxime dolore cum esse et quam obcaecati, deserunt, asperiores omnis dolores iure. Possimus eius suscipit, alias culpa quasi tempore repudiandae!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eius quas distinctio modi facilis beatae in veniam quaerat, dolorem, saepe harum ducimus fugiat, at odit? Itaque architecto repellendus sit sapiente?
-                        Quibusdam dicta impedit praesentium rerum. Soluta officia quo accusantium quidem ullam odit doloremque culpa. Eaque voluptas tempore magnam. Voluptates unde quae debitis praesentium adipisci cumque, amet sunt fugiat distinctio nobis.
-                        Quaerat recusandae nisi facilis numquam atque voluptatum cum rerum nulla suscipit illo rem provident nihil, maxime repellat ex asperiores iusto itaque vero ut ullam vel soluta reiciendis. Facere, neque reprehenderit.
-                        Doloremque molestias iure explicabo accusantium ad quasi blanditiis facilis fugit quas! Commodi veniam esse cupiditate, autem accusantium aspernatur nihil dolore pariatur blanditiis harum rem quae voluptates corporis quos mollitia libero?
-                        Excepturi voluptates sint beatae perferendis nobis libero placeat consequatur voluptas repellat animi consectetur quos accusantium blanditiis mollitia, neque perspiciatis doloremque natus aut? Quisquam eligendi mollitia beatae doloremque accusantium sed voluptatibus!
-                    </p>
+                <v-col class="d-flex justify-center">
+                    <v-col cols="6">
+                        <h2 class="fs-3 dancing-script text-center mb-2">My Review</h2>
+                        <v-divider class="my-2"/>
+                        <p class="lora body-1">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate aut praesentium eum dolore sit nisi, eos unde, reiciendis est quia, facere magnam obcaecati error! Fugiat sapiente corporis velit. Corrupti, veniam.
+                            Cupiditate unde fuga saepe tempore dicta quisquam non aliquid doloremque sapiente provident voluptatibus consequatur nobis sit impedit, iusto quam beatae totam fugiat eaque inventore recusandae odio animi nesciunt? Minus, nihil!
+                            Sit quisquam voluptatem blanditiis repellendus dolore quia repellat cumque odit voluptate impedit repudiandae ut id provident, ex suscipit laudantium recusandae corporis consequatur! Consectetur omnis vero non incidunt molestias iusto velit.
+                            Animi nam voluptatem iusto quisquam culpa autem laboriosam quidem similique dicta a inventore sunt repellendus odio id, esse libero exercitationem ducimus nostrum fuga et voluptatibus asperiores? Velit cumque nemo fugit?
+                            Accusamus iste ipsum harum qui quas, iure repellendus culpa sed exercitationem? Nihil aliquam, quo eius et aut facere excepturi libero doloribus impedit recusandae. Natus dignissimos laudantium inventore praesentium tenetur facilis!
+                            Vitae libero iusto rerum minima laboriosam dolor, asperiores in magnam eos ex minus, reiciendis sit ducimus nihil. Esse, perspiciatis. Aliquam repellat commodi excepturi, quisquam repellendus id nihil iure perferendis eius?
+                            Ipsam exercitationem, fugit quos dolor adipisci amet nobis delectus, quia consequatur porro nisi vero obcaecati ad, neque harum veniam inventore? Vero optio fuga dolor! Officiis molestias rem blanditiis eaque sunt?
+                        </p>
+                    </v-col>
                 </v-col>
             </v-row>
         </v-container>
