@@ -6,7 +6,7 @@
                     <h2 class="fs-3 dancing-script mb-2 flex-grow-0 text-center">Info</h2>
                     <div id="info" class="d-flex flex-column justify-center text-center align-stretch flex-grow-1">
                     <v-img
-                        src="@/assets/covers/balance.jpeg"
+                        src="@/assets/covers/from_blood_and_ash.jpeg"
                         max-width="200"
                         max-height="300"
                         class="my-2 mx-auto"
@@ -47,12 +47,17 @@
                     </div>
                 </v-col>
                 <v-divider vertical/>
-                <v-col class="mr-2">
+                <v-col class="mr-2" cols="5" offset="2">
                     <h2 class="fs-3 dancing-script text-center mb-2">My Review</h2>
                     <v-divider class="my-2"/>
-                    <p>
+                    <p class="lora body-1">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos rerum, eum quia dignissimos quaerat dolore saepe. Eum excepturi consequuntur alias voluptatum assumenda, perspiciatis voluptate. Omnis quis exercitationem at obcaecati!
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius impedit maxime dolore cum esse et quam obcaecati, deserunt, asperiores omnis dolores iure. Possimus eius suscipit, alias culpa quasi tempore repudiandae!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eius quas distinctio modi facilis beatae in veniam quaerat, dolorem, saepe harum ducimus fugiat, at odit? Itaque architecto repellendus sit sapiente?
+                        Quibusdam dicta impedit praesentium rerum. Soluta officia quo accusantium quidem ullam odit doloremque culpa. Eaque voluptas tempore magnam. Voluptates unde quae debitis praesentium adipisci cumque, amet sunt fugiat distinctio nobis.
+                        Quaerat recusandae nisi facilis numquam atque voluptatum cum rerum nulla suscipit illo rem provident nihil, maxime repellat ex asperiores iusto itaque vero ut ullam vel soluta reiciendis. Facere, neque reprehenderit.
+                        Doloremque molestias iure explicabo accusantium ad quasi blanditiis facilis fugit quas! Commodi veniam esse cupiditate, autem accusantium aspernatur nihil dolore pariatur blanditiis harum rem quae voluptates corporis quos mollitia libero?
+                        Excepturi voluptates sint beatae perferendis nobis libero placeat consequatur voluptas repellat animi consectetur quos accusantium blanditiis mollitia, neque perspiciatis doloremque natus aut? Quisquam eligendi mollitia beatae doloremque accusantium sed voluptatibus!
                     </p>
                 </v-col>
             </v-row>
