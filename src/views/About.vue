@@ -2,7 +2,7 @@
     <div id="about">
         <v-container>
             <v-row>
-                <v-col cols="6" offset="3" class="fs-1_2">
+                <v-col cols="12" md="10" offset-md="1" lg="6" offset-lg="3" offset-xl="3" xl="6" class="fs-1_2">
                     <h2 class="fs-4 dancing-script mb-2 mt-2 flex-grow-0 text-center">About me</h2>
                     <v-divider  class="my-2"/>
                     <p>
@@ -20,7 +20,7 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="6" offset="3" class="fs-1_2">
+                <v-col cols="12" md="10" offset-md="1" lg="6" offset-lg="3" offset-xl="3" xl="6" class="fs-1_2">
                     <h2 class="fs-4 dancing-script mb-2 mt-2 flex-grow-0 text-center">About Geneviève</h2>
                     <v-divider  class="my-2"/>
                     <p>
