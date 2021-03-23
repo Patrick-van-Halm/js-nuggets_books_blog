@@ -58,7 +58,7 @@
 </template>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&family=Lora&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&family=Roboto+Slab&display=swap');
 
 
   .dancing-script{
@@ -66,11 +66,11 @@
   }
 
   .indie-flower{
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Indie Flower', cursive !important;
   }
 
-  .lora {
-      font-family: 'Lora', serif;
+  .roboto-slab {
+      font-family: 'Roboto Slab', serif !important;
   }
 
   .fs-2{
