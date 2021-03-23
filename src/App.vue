@@ -78,16 +78,29 @@
   }
 
   .fs-3{
-    font-size: 3rem;
+    font-size: 3rem !important;
+  }
+
+  .fs-4{
+    font-size: 4rem !important;
   }
 
   .fs-1{
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
 
   .fs-1_5{
     font-size: 1.5rem !important;
   }
+
+  .fs-1_2{
+    font-size: 1.2rem !important;
+  }
+
+  .fs-1_1{
+    font-size: 1.1rem !important;
+  }
+
 
   h2 {
     font-size: 3rem !important;

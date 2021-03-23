@@ -51,7 +51,7 @@
                     <v-col cols="6">
                         <h2 class="fs-3 dancing-script text-center mb-2">My Review</h2>
                         <v-divider class="my-2"/>
-                        <p class="body-1" style="font-family: 'Roboto Slab', serif !important">
+                        <p class="body-1" style="font-family: 'Roboto Slab', serif !important; font-size: 1.1rem !important">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate aut praesentium eum dolore sit nisi, eos unde, reiciendis est quia, facere magnam obcaecati error! Fugiat sapiente corporis velit. Corrupti, veniam.
                             Cupiditate unde fuga saepe tempore dicta quisquam non aliquid doloremque sapiente provident voluptatibus consequatur nobis sit impedit, iusto quam beatae totam fugiat eaque inventore recusandae odio animi nesciunt? Minus, nihil!
                             Sit quisquam voluptatem blanditiis repellendus dolore quia repellat cumque odit voluptate impedit repudiandae ut id provident, ex suscipit laudantium recusandae corporis consequatur! Consectetur omnis vero non incidunt molestias iusto velit.
