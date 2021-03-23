@@ -47,7 +47,7 @@
                     </div>
                 </v-col>
                 <v-divider vertical/>
-                <v-col>
+                <v-col class="mr-2">
                     <h2 class="fs-3 dancing-script text-center mb-2">My Review</h2>
                     <v-divider class="my-2"/>
                     <p>
