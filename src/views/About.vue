@@ -30,7 +30,7 @@
                         I've spent my whole life reading books and my current boyfriend came actually up with the idea of starting a blog. My current boyfriend also likes making nicknames for me and one day he came up with the nickname Nugget. This nickname stuck with me hence this blog being called Nuggets Books Blog.
                     </p>
                     <p>
-                        In my house live 2 cats with me Loes and Hayley sometimes they can be on my nerves but they also like cuddles.
+                        In my house live 2 cats with me, they're called Loes and Hayley sometimes they can be on my nerves but they also like cuddles.
                     </p>
                     <p>
                         This blog was actually built by my boyfriend and as a reward for him he gets many cuddles. And for the technical people out there this blog was build with Vue and using Vuetify.
