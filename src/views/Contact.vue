@@ -16,7 +16,8 @@
                     <v-divider  class="my-2"/>
                     <h3 class="fs-2 dancing-script text-center mb-2">My social media</h3>
                     <div class="d-flex justify-space-around">
-                        <v-btn tile class="px-2 my-1 mx-auto bg-tertiary" min-width="36" href="mailto:MAIL">Booktok</v-btn>
+                        <v-btn tile class="px-2 my-1 mx-auto bg-tertiary" min-width="36" href="mailto:MAIL">Tiktok</v-btn>
+                        <v-btn tile class="px-2 my-1 mx-auto bg-tertiary" min-width="36" href="mailto:MAIL">Instagram</v-btn>
                     </div>
                 </v-col>
             </v-row>
