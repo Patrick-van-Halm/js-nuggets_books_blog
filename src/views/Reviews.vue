@@ -62,7 +62,7 @@
             <v-container v-else>
               <v-row>
                 <v-col cols="12" md="6" lg="4" v-for="(book, i) in books" :key="i">
-                  <BookCard :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
+                  <BookCard  :id="book.id" :title="book.title" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 :author="book.author" genre="Fantasy/Romance" :age=18 :border=true series="From Blood and Ash" :seriesBookNum=1 />
                 </v-col>
               </v-row>
             </v-container>
@@ -97,10 +97,10 @@ export default {
     selected_letter: '',
     selected_author: '',
     allBooks: [
-      {title: "Test", author: "James", date: "20-01-2021"},
-      {title: "Test2", author: "James", date: "21-01-2021"},
-      {title: "Test3", author: "James", date: "22-01-2021"},
-      {title: "John's dish", author: "John", date: "23-01-2021"},
+      {title: "Test", author: "James", date: "20-01-2021", id: "1"},
+      {title: "Test2", author: "James", date: "21-01-2021", id: "2"},
+      {title: "Test3", author: "James", date: "22-01-2021", id: "3"},
+      {title: "John's dish", author: "John", date: "23-01-2021", id: "4"},
     ],
     filteredAuthors: [],
     books: [],

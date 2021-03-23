@@ -13,13 +13,13 @@
             <v-container>
               <v-row>
                 <v-col cols="12" md="6" xl="4" class="my-auto">
-                  <BookCard title="From Blood and Ash" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 author="Jennifer L. Armentrout" genre="Fantasy/Romance" :age=18 />
+                  <BookCard id="1" title="From Blood and Ash" imageName="from_blood_and_ash.jpeg" text="Book review 1" :rating=2 author="Jennifer L. Armentrout" genre="Fantasy/Romance" :age=18 />
                 </v-col>
                 <v-col cols="12" md="6" xl="4" class="my-auto">
-                  <BookCard title="Kingdom of Flesh and Fire" imageName="kingdom_of_flesh_and_fire.jpeg" text="Book review 2" :rating=4 author="Jennifer L. Armentrout" genre="Fantasy/Romance" :age=18 />
+                  <BookCard id="2" title="Kingdom of Flesh and Fire" imageName="kingdom_of_flesh_and_fire.jpeg" text="Book review 2" :rating=4 author="Jennifer L. Armentrout" genre="Fantasy/Romance" :age=18 />
                 </v-col>
                 <v-col cols="12" offset="0" md="6" offset-md="3" offset-xl="0" xl="4" class="my-auto">
-                  <BookCard title="Balance" imageName="balance.jpeg" text="Book review 3" :rating=3.5 author="Lucia Franco" genre="Romance/Erotic" :age=18 />
+                  <BookCard id="3" title="Balance" imageName="balance.jpeg" text="Book review 3" :rating=3.5 author="Lucia Franco" genre="Romance/Erotic" :age=18 />
                 </v-col>
               </v-row>  
             </v-container>

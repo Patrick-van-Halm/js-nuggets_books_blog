@@ -26,7 +26,7 @@
                         :size="this.getRatingFontSize"
                         class="flex-grow-0 text-center"
                     />
-                    <v-btn small class="flex-grow-0 bg-tertiary text-none" right ripple tile>Read review >></v-btn>
+                    <v-btn small class="flex-grow-0 bg-tertiary text-none" right ripple tile :to="{ name: 'Review', params: { id: id } }">Read review >></v-btn>
                 </div>
             </v-col>
         </v-row>
@@ -57,6 +57,7 @@
 <script>
 export default {
     props: {
+        id: String,
         title: String,
         author: String,
         genre: String,
